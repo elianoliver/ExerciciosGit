@@ -1,0 +1,94 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #f2f2f2;
+}
+
+h1{
+	text-align: center;
+	margin-top: 20px;
+	color: #333;
+}
+
+form{
+	background-color: #fff;
+	max-width: 400px;
+	margin: 30px auto;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label{
+	display: block;
+	margin-bottom: 8px;
+	color: #555;
+}
+
+input[type="number"]{
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+button{
+	width: 100%;
+	padding: 10px;
+	background-color: #28a745;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+button:hover{
+	background-color: #218838;
+}
+
+#resultado{
+	margin-top: 20px;
+	padding: 15px;
+	background-color: #e9ecef;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 18px;
+	color: #333;
+}
+
+#resultado p {
+	margin: 10px 0;
+}
+#resultado #imc {
+	font-weight: bold;
+}
+#resultado #classificacao {
+	font-style: italic;
+}
+
+/* se classificação for... */
+#resultado .abaixo-peso {
+	color: #007bff; /* azul */
+}
+#resultado .peso-normal {
+	color: #28a745; /* verde */
+}
+#resultado .sobrepeso {
+	color: #ffc107; /* amarelo */
+}
+#resultado .obesidade {
+	color: #dc3545; /* vermelho */
+}
+
+
+
+
+
+

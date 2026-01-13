@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculadora de Índice de Massa Corporal (IMC)</h1>
+    <form id="imcForm">
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso" step="0.1" required>
+        <br><br>
+        <label for="altura">Altura (m):</label>
+        <input type="number" id="altura" name="altura" step="0.01" required>
+        <br><br>
+        <button type="submit">Calcular IMC</button>
+    </form>
+    <div id="resultado">
+        <p id="imc"></p>
+        <p id="classificacao"></p>
+    </div>
+
+    <script>
+        document.getElementById('imcForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const inputPeso = parseFloat(document.getElementById('peso').value);
+            const inputAltura = parseFloat(document.getElementById('altura').value);
+            const fieldIMC = document.getElementById('imc');
+            const fieldClassificacao = document.getElementById('classificacao');
+            const imc = inputPeso / (inputAltura * inputAltura);
+            let classificacao = '';
+
+            if (imc < 18.5) {
+                classificacao = 'Abaixo do peso';
+            } else if (imc >= 18.5 && imc < 24.9) {
+                classificacao = 'Peso normal';
+            } else if (imc >= 25 && imc < 29.9) {
+                classificacao = 'Sobrepeso';
+            } else {
+                classificacao = 'Obesidade';
+            }
+
+            fieldIMC.innerText = `Seu IMC é ${imc.toFixed(2)}`;
+            fieldClassificacao.innerText = classificacao;
+
+            fieldClassificacao.className = '';
+            if (imc < 18.5) {
+                fieldClassificacao.classList.add('abaixo-peso');
+            } else if (imc >= 18.5 && imc < 24.9) {
+                fieldClassificacao.classList.add('peso-normal');
+            } else if (imc >= 25 && imc < 29.9) {
+                fieldClassificacao.classList.add('sobrepeso');
+            } else {
+                fieldClassificacao.classList.add('obesidade');
+            }
+        });
+    </script>
+    
+</body>
+</html>
