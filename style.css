@@ -1,94 +1,77 @@
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
-body{
-	font-family: Arial, Helvetica, sans-serif;
-	background-color: #f2f2f2;
-}
-
-h1{
-	text-align: center;
-	margin-top: 20px;
-	color: #333;
-}
-
-form{
-	background-color: #fff;
-	max-width: 400px;
-	margin: 30px auto;
+header{
+	background-color: #f8f9fa;
 	padding: 20px;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	font-family: Arial, sans-serif;
 }
 
-label{
-	display: block;
-	margin-bottom: 8px;
-	color: #555;
+header h1{
+	color: #343a40;
+	font-size: 36px;
+	margin: 0;
 }
 
-input[type="number"]{
-	width: 100%;
-	padding: 10px;
+header p{
+	color: #6c757d;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+main{
+	padding: 20px;
+	font-family: Arial, sans-serif;
+}
+
+main p{
+	color: #495057;
+	font-size: 16px;
+	line-height: 1.5;
 	margin-bottom: 15px;
+}
+
+#game-container {
+	max-width: 400px;
+	margin: 20px auto;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+#guess-input {
+	width: calc(100% - 22px);
+	padding: 10px;
+	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
+	font-size: 16px;
 }
 
-button{
+#submit-guess {
 	width: 100%;
 	padding: 10px;
-	background-color: #28a745;
+	background-color: #007bff;
 	color: white;
 	border: none;
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 16px;
+	transition: background-color 0.3s;
 }
 
-button:hover{
-	background-color: #218838;
+#submit-guess:hover {
+	background-color: #0056b3;
 }
 
-#resultado{
-	margin-top: 20px;
-	padding: 15px;
-	background-color: #e9ecef;
-	border-radius: 4px;
-	text-align: center;
-	font-size: 18px;
-	color: #333;
-}
-
-#resultado p {
-	margin: 10px 0;
-}
-#resultado #imc {
+#feedback {
+	margin-top: 15px;
 	font-weight: bold;
-}
-#resultado #classificacao {
-	font-style: italic;
+	min-height: 24px;
 }
 
-/* se classificação for... */
-#resultado .abaixo-peso {
-	color: #007bff; /* azul */
+#attempts {
+	color: #6c757d;
 }
-#resultado .peso-normal {
-	color: #28a745; /* verde */
-}
-#resultado .sobrepeso {
-	color: #ffc107; /* amarelo */
-}
-#resultado .obesidade {
-	color: #dc3545; /* vermelho */
-}
-
-
-
-
-
 

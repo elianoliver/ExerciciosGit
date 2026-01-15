@@ -1,62 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora IMC</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Calculadora de Índice de Massa Corporal (IMC)</h1>
-    <form id="imcForm">
-        <label for="peso">Peso (kg):</label>
-        <input type="number" id="peso" name="peso" step="0.1" required>
-        <br><br>
-        <label for="altura">Altura (m):</label>
-        <input type="number" id="altura" name="altura" step="0.01" required>
-        <br><br>
-        <button type="submit">Calcular IMC</button>
-    </form>
-    <div id="resultado">
-        <p id="imc"></p>
-        <p id="classificacao"></p>
-    </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Jogo de Adivinhação</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Bem-vindo ao Jogo de Adivinhação!</h1>
+			<p>Tente adivinhar o número que estou pensando entre 1 e 100.</p>
+		</header>
+		<main>
+			<div id="game-container">
+				<input
+					type="number"
+					id="guess-input"
+					placeholder="Digite seu palpite"
+					min="1"
+					max="100"
+				/>
+				<button id="submit-guess">Chutar</button>
+				<p id="feedback"></p>
+				<p id="attempts">Tentativas restantes: 10</p>
+			</div>
+		</main>
+	</body>
 
-    <script>
-        document.getElementById('imcForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const inputPeso = parseFloat(document.getElementById('peso').value);
-            const inputAltura = parseFloat(document.getElementById('altura').value);
-            const fieldIMC = document.getElementById('imc');
-            const fieldClassificacao = document.getElementById('classificacao');
-            const imc = inputPeso / (inputAltura * inputAltura);
-            let classificacao = '';
+	<script>
+		const generateRandomNumber = () => Math.floor(Math.random() * 100) + 1;
+		let randomNumber = generateRandomNumber();
+		let attemptsLeft = 10;
 
-            if (imc < 18.5) {
-                classificacao = 'Abaixo do peso';
-            } else if (imc >= 18.5 && imc < 24.9) {
-                classificacao = 'Peso normal';
-            } else if (imc >= 25 && imc < 29.9) {
-                classificacao = 'Sobrepeso';
-            } else {
-                classificacao = 'Obesidade';
-            }
+		function resetGame() {
+			randomNumber = generateRandomNumber();
+			attemptsLeft = 10;
+			document.getElementById(
+				"attempts"
+			).textContent = `Tentativas restantes: ${attemptsLeft}`;
+		}
 
-            fieldIMC.innerText = `Seu IMC é ${imc.toFixed(2)}`;
-            fieldClassificacao.innerText = classificacao;
+		function submitGuess() {
+			const guessInput = document.getElementById("guess-input");
+			const feedback = document.getElementById("feedback");
+			const attemptsDisplay = document.getElementById("attempts");
+			const userGuess = Number(guessInput.value);
 
-            fieldClassificacao.className = '';
-            if (imc < 18.5) {
-                fieldClassificacao.classList.add('abaixo-peso');
-            } else if (imc >= 18.5 && imc < 24.9) {
-                fieldClassificacao.classList.add('peso-normal');
-            } else if (imc >= 25 && imc < 29.9) {
-                fieldClassificacao.classList.add('sobrepeso');
-            } else {
-                fieldClassificacao.classList.add('obesidade');
-            }
-        });
-    </script>
-    
-</body>
+			if (!userGuess || userGuess < 1 || userGuess > 100) {
+				feedback.textContent =
+					"Por favor, insira um número válido entre 1 e 100.";
+				return;
+			}
+
+			attemptsLeft--;
+
+			if (userGuess === randomNumber) {
+				feedback.textContent = "Você acertou!";
+				resetGame();
+			} else if (attemptsLeft === 0) {
+				feedback.textContent = `Você perdeu! O número secreto era ${randomNumber}.`;
+				resetGame();
+			} else {
+				feedback.textContent =
+					userGuess < randomNumber
+						? "O número secreto é maior"
+						: "O número secreto é menor";
+				attemptsDisplay.textContent = `Tentativas restantes: ${attemptsLeft}`;
+			}
+
+			guessInput.value = "";
+		}
+		document
+			.getElementById("submit-guess")
+			.addEventListener("click", submitGuess);
+	</script>
 </html>
