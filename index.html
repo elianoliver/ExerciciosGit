@@ -1,77 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Jogo de Adivinhação</title>
 		<link rel="stylesheet" href="style.css" />
+		<script async defer src="script.js"></script>
 	</head>
+
 	<body>
 		<header>
-			<h1>Bem-vindo ao Jogo de Adivinhação!</h1>
-			<p>Tente adivinhar o número que estou pensando entre 1 e 100.</p>
+			<h1>Parquímetro</h1>
+			<p>Informe um valor e retornaremos o tempo de permanência e o troco</p>
 		</header>
+
 		<main>
-			<div id="game-container">
-				<input
-					type="number"
-					id="guess-input"
-					placeholder="Digite seu palpite"
-					min="1"
-					max="100"
-				/>
-				<button id="submit-guess">Chutar</button>
-				<p id="feedback"></p>
-				<p id="attempts">Tentativas restantes: 10</p>
+			<div id="container">
+
+				<form id="formParquimetro">
+					<input 
+						id="inputElement" 
+						type="number"
+						min="0" 
+						placeholder="Ex: 1,50" />
+					<button id="buttonElement" type="submit">Calcular</button>
+				</form>
+
+
+				<p id="feedbackElement"></p>
+
+				<table>
+					<thead>
+						<tr>
+							<th>Valor</th>
+							<th>Tempo</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>R$ 1,00</td>
+							<td>30 minutos</td>
+						</tr>
+
+						<tr>
+							<td>R$ 1,75</td>
+							<td>60 minutos</td>
+						</tr>
+						<tr>
+							<td>R$ 3,00</td>
+							<td>120 minutos (tempo máximo permitido)</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</main>
 	</body>
-
-	<script>
-		const generateRandomNumber = () => Math.floor(Math.random() * 100) + 1;
-		let randomNumber = generateRandomNumber();
-		let attemptsLeft = 10;
-
-		function resetGame() {
-			randomNumber = generateRandomNumber();
-			attemptsLeft = 10;
-			document.getElementById(
-				"attempts"
-			).textContent = `Tentativas restantes: ${attemptsLeft}`;
-		}
-
-		function submitGuess() {
-			const guessInput = document.getElementById("guess-input");
-			const feedback = document.getElementById("feedback");
-			const attemptsDisplay = document.getElementById("attempts");
-			const userGuess = Number(guessInput.value);
-
-			if (!userGuess || userGuess < 1 || userGuess > 100) {
-				feedback.textContent =
-					"Por favor, insira um número válido entre 1 e 100.";
-				return;
-			}
-
-			attemptsLeft--;
-
-			if (userGuess === randomNumber) {
-				feedback.textContent = "Você acertou!";
-				resetGame();
-			} else if (attemptsLeft === 0) {
-				feedback.textContent = `Você perdeu! O número secreto era ${randomNumber}.`;
-				resetGame();
-			} else {
-				feedback.textContent =
-					userGuess < randomNumber
-						? "O número secreto é maior"
-						: "O número secreto é menor";
-				attemptsDisplay.textContent = `Tentativas restantes: ${attemptsLeft}`;
-			}
-
-			guessInput.value = "";
-		}
-		document
-			.getElementById("submit-guess")
-			.addEventListener("click", submitGuess);
-	</script>
 </html>
