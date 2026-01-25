@@ -1,58 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Jogo de Adivinhação</title>
-		<link rel="stylesheet" href="style.css" />
-		<script async defer src="script.js"></script>
-	</head>
-
-	<body>
-		<header>
-			<h1>Parquímetro</h1>
-			<p>Informe um valor e retornaremos o tempo de permanência e o troco</p>
-		</header>
-
-		<main>
-			<div id="container">
-
-				<form id="formParquimetro">
-					<input 
-						id="inputElement" 
-						type="number"
-						min="0" 
-						placeholder="Ex: 1,50" />
-					<button id="buttonElement" type="submit">Calcular</button>
-				</form>
-
-
-				<p id="feedbackElement"></p>
-
-				<table>
-					<thead>
-						<tr>
-							<th>Valor</th>
-							<th>Tempo</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>R$ 1,00</td>
-							<td>30 minutos</td>
-						</tr>
-
-						<tr>
-							<td>R$ 1,75</td>
-							<td>60 minutos</td>
-						</tr>
-						<tr>
-							<td>R$ 3,00</td>
-							<td>120 minutos (tempo máximo permitido)</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</main>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadastro de Usuário</h1>
+        <form id="userForm">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" name="cep" required>
+            </div>
+            <div class="form-group">
+                <label for="logradouro">Logradouro:</label>
+                <input type="text" id="logradouro" name="logradouro" readonly>
+            </div>
+            <div class="form-group">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" name="numero">
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro:</label>
+                <input type="text" id="bairro" name="bairro" readonly>
+            </div>
+            <div class="form-group">
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" readonly>
+            </div>
+            <div class="form-group">
+                <label for="estado">Estado:</label>
+                <input type="text" id="estado" name="estado" readonly>
+            </div>
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
 </html>

@@ -1,43 +1,11 @@
-header{
-	background-color: #f8f9fa;
-	padding: 20px;
-	text-align: center;
-	font-family: Arial, sans-serif;
-}
-
-header h1{
-	color: #343a40;
-	font-size: 36px;
-	margin: 0;
-}
-
-header p{
-	color: #6c757d;
-	font-size: 18px;
-	margin-top: 10px;
-}
-
-main{
-	padding: 20px;
-	font-family: Arial, sans-serif;
-}
-
-main p{
-	color: #495057;
-	font-size: 16px;
-	line-height: 1.5;
-	margin-bottom: 15px;
-}
-
-#container {
-	max-width: 400px;
-	margin: 20px auto;
-	padding: 20px;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	background-color: #fff;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	text-align: center;
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
 input {
@@ -61,33 +29,45 @@ button {
 	transition: background-color 0.3s;
 }
 
-#feedback {
-	margin-top: 15px;
-	font-weight: bold;
-	min-height: 24px;
+button:hover {
+    background-color: #0056b3;
 }
 
-/* ================= TABELA ================= */
+/* ================= FORMULÁRIO DE CADASTRO ================= */
 
-table {
-	width: 100%;
-	border-collapse: collapse;
-	margin-top: 20px;
-	font-size: 14px;
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
-th,
-td {
-	border: 1px solid #ddd;
-	padding: 12px;
-	text-align: left;
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
 }
 
-thead {
-	background-color: #007bff;
-	color: white;
+.form-group {
+    margin-bottom: 1rem;
 }
 
-tbody tr:nth-child(even) {
-	background-color: #f2f2f2;
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Adicionado para corrigir o layout */
+}
+
+.form-group input:read-only {
+    background-color: #e9ecef;
 }

@@ -1,66 +1,61 @@
-class Parquimetro {
+document.addEventListener('DOMContentLoaded', () => {
+    const userForm = document.getElementById('userForm');
+    const cepInput = document.getElementById('cep');
 
-	#tarifas
+    // Carregar dados do Web Storage ao iniciar
+    loadFormData();
 
-	constructor() {
-		// Elements
-		this.formElement = document.querySelector("#formParquimetro")
-		this.formElement.addEventListener("submit",this.handleSubmit.bind(this))
-		this.inputElement = document.querySelector("#inputElement");
-		this.feedbackElement = document.querySelector("#feedbackElement");
-		// Tarifas
-		this.#tarifas = [
-			{ valorMin: 1.0, tempo: 30 },
-			{ valorMin: 1.75, tempo: 60 },
-			{ valorMin: 3.0, tempo: 120 },
-		];
-	}
+    cepInput.addEventListener('blur', () => {
+        const cep = cepInput.value.replace(/\D/g, '');
+        if (cep.length === 8) {
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById('logradouro').value = data.logradouro;
+                        document.getElementById('bairro').value = data.bairro;
+                        document.getElementById('cidade').value = data.localidade;
+                        document.getElementById('estado').value = data.uf;
+                    } else {
+                        alert('CEP não encontrado.');
+                    }
+                })
+                .catch(error => console.error('Erro ao buscar CEP:', error));
+        }
+    });
 
-	handleSubmit(event){
-		event.preventDefault()
-		this.handleCalculo()
-	}
+    userForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        saveFormData();
+        alert('Dados salvos com sucesso!');
+    });
 
-	handleCalculo() {
-		const valorInserido = parseFloat(this.inputElement.value);
+    function saveFormData() {
+        const formData = {
+            nome: document.getElementById('nome').value,
+            email: document.getElementById('email').value,
+            cep: document.getElementById('cep').value,
+            logradouro: document.getElementById('logradouro').value,
+            numero: document.getElementById('numero').value,
+            bairro: document.getElementById('bairro').value,
+            cidade: document.getElementById('cidade').value,
+            estado: document.getElementById('estado').value,
+        };
+        localStorage.setItem('userFormData', JSON.stringify(formData));
+    }
 
-		if (isNaN(valorInserido) || valorInserido <= 0) {
-			this.exibirMensagem("Por favor, insira um valor válido.");
-			return;
-		}
-
-		let tempo = 0;
-		let troco = 0;
-		let mensagem = "";
-
-		if (valorInserido < this.#tarifas[0].valorMin) {
-			mensagem = "Valor insuficiente.";
-		} else {
-			let tarifaEncontrada = null;
-			for (let i = this.#tarifas.length - 1; i >= 0; i--) {
-				const tarifa = this.#tarifas[i];
-				if (valorInserido >= tarifa.valorMin) {
-					tarifaEncontrada = tarifa;
-					break; 
-				}
-			}
-
-			if (tarifaEncontrada) {
-				tempo = tarifaEncontrada.tempo;
-				troco = valorInserido - tarifaEncontrada.valorMin;
-				mensagem = `Tempo de permanência: ${tempo} minutos.`;
-				if (troco > 0) {
-					mensagem += ` Troco: R$ ${troco.toFixed(2)}.`;
-				}
-			}
-		}
-
-		this.exibirMensagem(mensagem);
-	}
-
-	exibirMensagem(mensagem) {
-		this.feedbackElement.textContent = mensagem;
-	}
-}
-
-let park1 = new Parquimetro();
+    function loadFormData() {
+        const savedData = localStorage.getItem('userFormData');
+        if (savedData) {
+            const formData = JSON.parse(savedData);
+            document.getElementById('nome').value = formData.nome || '';
+            document.getElementById('email').value = formData.email || '';
+            document.getElementById('cep').value = formData.cep || '';
+            document.getElementById('logradouro').value = formData.logradouro || '';
+            document.getElementById('numero').value = formData.numero || '';
+            document.getElementById('bairro').value = formData.bairro || '';
+            document.getElementById('cidade').value = formData.cidade || '';
+            document.getElementById('estado').value = formData.estado || '';
+        }
+    }
+});
