@@ -3,9 +3,10 @@ body {
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Alterado para alinhar no topo */
     min-height: 100vh;
     margin: 0;
+    padding-top: 2rem; /* Adicionado espaço no topo */
 }
 
 input {
@@ -33,7 +34,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* ================= FORMULÁRIO DE CADASTRO ================= */
+/* ================= CONTAINER PRINCIPAL ================= */
 
 .container {
     background-color: #fff;
@@ -44,11 +45,13 @@ button:hover {
     max-width: 500px;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #333;
     margin-bottom: 1.5rem;
 }
+
+/* ================= FORMULÁRIO DE CADASTRO ================= */
 
 .form-group {
     margin-bottom: 1rem;
@@ -65,9 +68,42 @@ h1 {
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Adicionado para corrigir o layout */
+    box-sizing: border-box;
 }
 
-.form-group input:read-only {
-    background-color: #e9ecef;
+/* ================= LISTA DE CLIENTES ================= */
+
+.list-container {
+    margin-top: 2rem;
+}
+
+#clientList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#clientList li {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: auto; /* Sobrescreve o width padrão */
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
 }
