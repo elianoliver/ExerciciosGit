@@ -3,29 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Clientes</title>
+    <title>Agência Criativa Web</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Cadastro de Clientes</h1>
-        <form id="clientForm">
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
+    <script src="js/main.js"></script>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="#home">
+                    <h1>Agência Criativa Web</h1>
+                </a>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <button type="submit">Salvar</button>
-        </form>
-
-        <div class="list-container">
-            <h2>Clientes Cadastrados</h2>
-            <ul id="clientList"></ul>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Abrir menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </div>
-    </div>
-    <script src="js/app.js" type="module"></script>
+    </header>
+
+    <main>
+        <section id="home" class="banner">
+            <div class="container">
+                <h2>Design que Inspira, Código que Transforma</h2>
+                <p>Unimos criatividade e tecnologia para construir experiências web memoráveis que impulsionam o seu negócio.</p>
+                <a href="#servicos" class="btn">Conheça Nossos Serviços</a>
+            </div>
+        </section>
+
+        <section id="sobre">
+            <div class="container">
+                <h2>Sobre Nós</h2>
+                <p>A Agência Criativa Web nasceu da paixão por criar soluções digitais que não apenas impressionam visualmente, mas que também são funcionais, intuitivas e alcançam resultados. Nossa equipe é formada por designers, desenvolvedores e estrategistas que trabalham em colaboração para transformar suas ideias em realidade.</p>
+                <p>Nossos valores são a criatividade, o compromisso com a qualidade e a parceria com nossos clientes. Acreditamos que um bom design faz a diferença.</p>
+            </div>
+        </section>
+
+        <section id="servicos">
+            <div class="container">
+                <h2>Nossos Serviços</h2>
+                <div class="servicos-grid">
+                    <div class="servico-item">
+                        <img src="https://via.placeholder.com/100x100/007BFF/FFFFFF?text=Design" alt="Ícone de Design Gráfico" loading="lazy">
+                        <h3>Design Gráfico</h3>
+                        <p>Criação de identidades visuais, logotipos e materiais gráficos que comunicam a essência da sua marca.</p>
+                    </div>
+                    <div class="servico-item">
+                        <img src="https://via.placeholder.com/100x100/007BFF/FFFFFF?text=Web" alt="Ícone de Desenvolvimento Web" loading="lazy">
+                        <h3>Desenvolvimento Web</h3>
+                        <p>Desenvolvemos sites e aplicações web responsivas, rápidas e otimizadas para os motores de busca.</p>
+                    </div>
+                    <div class="servico-item">
+                        <img src="https://via.placeholder.com/100x100/007BFF/FFFFFF?text=Brand" alt="Ícone de Branding" loading="lazy">
+                        <h3>Branding</h3>
+                        <p>Construímos e fortalecemos marcas através de estratégias de posicionamento e comunicação visual.</p>
+                    </div>
+                     <div class="servico-item">
+                        <img src="https://via.placeholder.com/100x100/007BFF/FFFFFF?text=Marketing" alt="Ícone de Marketing Digital" loading="lazy">
+                        <h3>Marketing Digital</h3>
+                        <p>Estratégias de SEO, gestão de redes sociais e campanhas para aumentar sua presença online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                <div class="depoimento-item">
+                    <blockquote>
+                        <p>"O trabalho da Agência Criativa Web superou todas as minhas expectativas. O site ficou incrível e o processo foi muito tranquilo."</p>
+                    </blockquote>
+                    <cite>– João Silva, CEO da Tech Inova</cite>
+                </div>
+                <div class="depoimento-item">
+                    <blockquote>
+                        <p>"Profissionalismo e criatividade definem esta equipe. Recomendo fortemente os serviços de branding!"</p>
+                    </blockquote>
+                    <cite>– Maria Oliveira, Fundadora da Doce Sabor</cite>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <div class="contato-wrapper">
+                    <div class="contato-info">
+                        <h3>Nossas Informações</h3>
+                        <p><strong>Endereço:</strong> Rua da Criatividade, 123, São Paulo - SP</p>
+                        <p><strong>Telefone:</strong> (11) 98765-4321</p>
+                        <p><strong>Email:</strong> contato@agenciacriativaweb.com</p>
+                    </div>
+                    <div class="contato-form">
+                        <h3>Envie uma mensagem</h3>
+                        <form>
+                            <input type="text" name="nome" placeholder="Seu nome" required>
+                            <input type="email" name="email" placeholder="Seu e-mail" required>
+                            <textarea name="mensagem" placeholder="Sua mensagem" rows="5" required></textarea>
+                            <button type="submit" class="btn">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Agência Criativa Web. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
