@@ -558,6 +558,7 @@ body {
     
     /* Menu desktop */
     .header__nav {
+        width: auto;
         position: static;
         transform: none;
         opacity: 1;
