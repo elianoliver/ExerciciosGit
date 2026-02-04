@@ -1,20 +1,20 @@
 // Menu responsivo
 document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
+    const menuToggle = document.querySelector('.header__menu-toggle');
+    const nav = document.querySelector('.header__nav');
 
     // Toggle do menu mobile
     menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-        menuToggle.classList.toggle('is-active');
+        nav.classList.toggle('header__nav--active');
+        menuToggle.classList.toggle('header__menu-toggle--active');
     });
 
     // Fecha o menu ao clicar em um link (mobile)
-    document.querySelectorAll('nav ul li a').forEach(link => {
+    document.querySelectorAll('.header__nav-link').forEach(link => {
         link.addEventListener('click', () => {
-            if (nav.classList.contains('nav-active')) {
-                nav.classList.remove('nav-active');
-                menuToggle.classList.remove('is-active');
+            if (nav.classList.contains('header__nav--active')) {
+                nav.classList.remove('header__nav--active');
+                menuToggle.classList.remove('header__menu-toggle--active');
             }
         });
     });
@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fecha o menu ao clicar fora dele (mobile)
     document.addEventListener('click', (e) => {
         if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
-            nav.classList.remove('nav-active');
-            menuToggle.classList.remove('is-active');
+            nav.classList.remove('header__nav--active');
+            menuToggle.classList.remove('header__menu-toggle--active');
         }
     });
 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Formulário de contato
-    const contactForm = document.querySelector('#contato form');
+    const contactForm = document.querySelector('.contact__form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
