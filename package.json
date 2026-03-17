@@ -1,0 +1,23 @@
+{
+  "name": "agencia-criativa-web",
+  "version": "2.0.0",
+  "description": "Agência Criativa Web - Refatoração com SASS",
+  "main": "index.html",
+  "scripts": {
+    "sass": "sass scss/estilos.scss css/estilos.css",
+    "sass:watch": "sass --watch scss:css",
+    "sass:minify": "sass --style=compressed scss/estilos.scss css/estilos.min.css"
+  },
+  "keywords": [
+    "sass",
+    "css",
+    "agencia",
+    "web",
+    "design"
+  ],
+  "author": "Agência Criativa Web",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
+}

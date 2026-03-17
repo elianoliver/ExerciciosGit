@@ -1,0 +1,272 @@
+// === LAYOUT GERAL
+// Agência Criativa Web - Estrutura de Layout
+
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+// === HEADER
+.header {
+  background-color: $cor-fundo;
+  border-bottom: 1px solid $cor-borda;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px;
+    padding: $espacamento-xs $container-padding;
+
+    @include media-tablet {
+      min-height: 70px;
+    }
+
+    @include media-desktop {
+      min-height: 80px;
+    }
+  }
+
+  // Logo
+  &__logo-link {
+    text-decoration: none;
+  }
+
+  &__logo-title {
+    margin: 0;
+    font-size: 1.2rem;
+    color: $cor-secundaria;
+    font-family: $fonte-primaria;
+    font-weight: 600;
+    line-height: $line-height-heading;
+
+    @include media-tablet {
+      font-size: 1.4rem;
+    }
+
+    @include media-desktop {
+      font-size: 1.5rem;
+    }
+  }
+
+  // Navegação
+  &__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $cor-fundo;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transicao-rapida;
+    box-shadow: 0 4px 8px rgba($cor-preta, 0.1);
+
+    @include media-desktop {
+      width: auto;
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &--active {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: $espacamento-sm 0;
+    gap: 0;
+
+    @include media-desktop {
+      flex-direction: row;
+      gap: $espacamento-lg;
+      padding: 0;
+    }
+  }
+
+  &__nav-item {
+    border-bottom: 1px solid $cor-borda;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    @include media-desktop {
+      border-bottom: none;
+    }
+  }
+
+  &__nav-link {
+    display: block;
+    text-decoration: none;
+    color: $cor-secundaria;
+    font-weight: 600;
+    padding: $espacamento-sm $container-padding;
+    transition: background-color $transicao-rapida;
+
+    @include media-desktop {
+      padding: $espacamento-xs 0;
+      position: relative;
+      background-color: transparent;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background-color: $cor-primaria;
+        transition: width $transicao-rapida;
+      }
+
+      &:hover {
+        background-color: transparent;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: $cor-cinza-claro;
+      color: $cor-primaria;
+
+      @include media-desktop {
+        background-color: transparent;
+        color: $cor-secundaria;
+      }
+    }
+  }
+
+  // Menu Toggle (Hamburger)
+  &__menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all $transicao-rapida;
+
+    @include media-desktop {
+      display: none;
+    }
+
+    &--active {
+      .header__menu-bar {
+        &:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+      }
+    }
+  }
+
+  &__menu-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: $cor-secundaria;
+    border-radius: 3px;
+    transition: all $transicao-rapida;
+  }
+}
+
+// === BANNER
+.banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop')
+      no-repeat center center / cover;
+  color: $cor-branco;
+  text-align: center;
+  padding: $espacamento-xl 0;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+
+  @include media-tablet {
+    padding: 4rem 0;
+    min-height: 60vh;
+  }
+
+  @include media-desktop {
+    padding: 6rem 0;
+    min-height: 70vh;
+  }
+
+  @include media-desktop-lg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop');
+  }
+
+  &__title {
+    color: $cor-branco;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: $espacamento-sm;
+    font-family: $fonte-primaria;
+    line-height: $line-height-heading;
+
+    @include media-tablet {
+      font-size: 2.5rem;
+    }
+
+    @include media-desktop {
+      font-size: 3rem;
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    margin-bottom: $espacamento-md;
+    line-height: $line-height-base;
+
+    @include media-tablet {
+      font-size: $font-size-grande;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include media-desktop {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// === FOOTER
+.footer {
+  background-color: $cor-secundaria;
+  color: $cor-branco;
+  text-align: center;
+  padding: $espacamento-md 0;
+
+  &__text {
+    font-size: $font-size-pequeno;
+    margin: 0;
+  }
+}

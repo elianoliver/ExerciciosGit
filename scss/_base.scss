@@ -1,0 +1,156 @@
+// === ESTILOS BASE
+// Agência Criativa Web - Reset e Estilos Globais
+
+@use 'variaveis' as *;
+@use 'mixins' as *;
+
+// === RESET
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: $fonte-primaria;
+  color: $cor-texto;
+  background-color: $cor-fundo;
+  line-height: $line-height-base;
+  font-size: $font-size-base;
+}
+
+// === TIPOGRAFIA GLOBAL
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fonte-primaria;
+  color: $cor-secundaria;
+  font-weight: 600;
+  line-height: $line-height-heading;
+}
+
+p {
+  margin-bottom: $espacamento-sm;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  color: $cor-primaria;
+  text-decoration: none;
+  transition: color $transicao-rapida;
+
+  &:hover {
+    color: $cor-primaria-hover;
+  }
+}
+
+// === CLASSES DE TIPOGRAFIA
+.heading {
+  font-family: $fonte-primaria;
+  color: $cor-secundaria;
+  font-weight: 600;
+  line-height: $line-height-heading;
+
+  &--primary {
+    font-size: 1.5rem;
+  }
+
+  &--secondary {
+    font-size: 1.8rem;
+    margin-bottom: $espacamento-sm;
+    text-align: center;
+  }
+
+  &--tertiary {
+    font-size: 1.2rem;
+    margin-bottom: $espacamento-xs;
+  }
+
+  &--light {
+    color: $cor-branco;
+  }
+}
+
+.text {
+  margin-bottom: $espacamento-sm;
+
+  &--small {
+    font-size: $font-size-pequeno;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--large {
+    font-size: $font-size-grande;
+  }
+}
+
+// === UTILITÁRIOS
+.container {
+  width: 100%;
+  padding: 0 $container-padding;
+  margin: 0 auto;
+
+  @include media-tablet {
+    max-width: 750px;
+  }
+
+  @include media-desktop {
+    max-width: 1100px;
+  }
+
+  @include media-desktop-lg {
+    max-width: 1200px;
+  }
+}
+
+.section {
+  padding: $section-padding;
+
+  &--alternate {
+    background-color: $cor-cinza-claro;
+  }
+}
+
+// === COMPONENTES UTILITÁRIOS
+.grid {
+  display: grid;
+  gap: $espacamento-md;
+
+  &--1-col {
+    grid-template-columns: 1fr;
+  }
+
+  &--2-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--4-col {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// === CARD GENÉRICO
+.card {
+  background-color: $cor-branco;
+  padding: $espacamento-md;
+  border-radius: $border-radius;
+  @include card-hover;
+
+  &--center {
+    text-align: center;
+  }
+}

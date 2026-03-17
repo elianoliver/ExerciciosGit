@@ -1,0 +1,8 @@
+node_modules/
+.vscode/
+.DS_Store
+*.min.css
+.sass-cache/
+.env
+package-lock.json
+css/

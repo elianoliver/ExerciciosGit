@@ -1,0 +1,100 @@
+// === MIXINS REUTILIZÁVEIS
+// Agência Criativa Web - SASS Mixins
+
+@use 'variaveis' as *;
+
+// Mixin para espaçamento padrão
+@mixin espacamento($top: $espacamento-md, $bottom: $espacamento-md) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
+
+// Mixin para estilos de botão
+@mixin botao-base {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  border-radius: $border-radius-small;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color $transicao-rapida;
+  border: none;
+  cursor: pointer;
+  font-family: $fonte-primaria;
+  font-size: $font-size-base;
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Mixin para card com hover effect
+@mixin card-hover {
+  box-shadow: $sombra-leve;
+  transition: transform $transicao-rapida, box-shadow $transicao-rapida;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $sombra-media;
+  }
+}
+
+// Mixin para flexbox centrado
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+// Mixin para grid responsivo
+@mixin grid-responsive($colunas: 1, $gap: $espacamento-md) {
+  display: grid;
+  grid-template-columns: repeat($colunas, 1fr);
+  gap: $gap;
+}
+
+// Mixin para media query
+@mixin media-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin media-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin media-desktop-lg {
+  @media (min-width: $breakpoint-desktop-lg) {
+    @content;
+  }
+}
+
+// Mixin para focus state acessível
+@mixin focus-visible {
+  outline: 2px solid $cor-primaria;
+  outline-offset: 2px;
+}
+
+// Mixin para truncar texto
+@mixin truncar-texto {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Mixin para elementos responsivos com aspect ratio
+@mixin aspect-ratio($largura, $altura) {
+  position: relative;
+  padding-bottom: calc(($altura / $largura) * 100%);
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
